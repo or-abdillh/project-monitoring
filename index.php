@@ -21,8 +21,27 @@
   <title>Project Monitoring</title>
 </head>
 <body>
-  <h1 class="text-2xl font-medium">
-    Hello world! <i class="fa-solid fa-users"></i>
-  </h1>
+  <main class="bg-slate-100 min-h-screen w-full pt-10 px-8">
+    <h1 class="text-xl text-gray-700 text-center mb-3 font-medium">Project Monitoring</h1> 
+
+    <!-- Table Wrapper -->
+    <div class="flex flex-col overflow-scroll w-10/12 mx-auto">
+      <div class="overflow-x-auto sm:-mx-6 lg:-mx-8">
+        <div class="py-2 inline-block min-w-full sm:px-6 lg:px-8">
+          <div class="overflow-x-auto">
+            <!-- Main Table -->
+            <table class="min-w-full" id="table">
+              <thead class="border-b">
+                <tr id="table-thead" class="bg-slate-200"></tr>
+              </thead>
+              <tbody id="table-tbody"></tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main> 
+  <!-- Script JS -->
+  <script type="text/javascript" src="./src/index.js"></script>
 </body>
 </html>

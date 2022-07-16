@@ -11,19 +11,19 @@ const TableBody = async el => {
   let num = 1;
   el.innerHTML = responses.map(res => {
     return `
-      <tr class="bg-white border-b transition duration-300 ease-in-out hover:bg-gray-100">
+      <tr class="bg-white border-b transition duration-300 ease-in-out hover:bg-gray-100 text-left">
         <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">${ num++ }</td>
           <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-              ${ res.name }
+            ${ res.name }
           </td>
            <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-              ${ res.client }
+            ${ res.client }
           </td>
           <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-              <span class="flex gap-2 justify-center items-center">
-                <i class="fa-solid fa-user text-gray-400"></i>
-                ${ res.leader }
-              </span>
+            <span class="flex gap-2 justify-center items-center">
+              <i class="fa-solid fa-user text-gray-400"></i>
+              ${ res.leader }
+            </span>
           </td>
           <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
               ${ res.start_date }
@@ -37,12 +37,11 @@ const TableBody = async el => {
             </div>
             <div class="w-full bg-gray-200 rounded-full h-2.5 dark:bg-gray-700">
               <div class="bg-green-600 h-2.5 rounded-full" style="width: ${ res.progress }%"></div>
-            </div>
- 
+            </div> 
           </td>
           <td class="text-sm text-gray-900 flex justify-center gap-2 font-light px-6 py-4 whitespace-nowrap">
-              <button class="bg-blue-600 rounded py-2 px-3"><i class="fa-solid fa-edit text-gray-100"></i></button>
-              <button class="bg-red-600 rounded py-2 px-3"><i class="fa-solid fa-trash text-gray-100"></i></button>
+            <i data-role="modal-edit:trigger" data-res-name="${ res.name }" data-res-client="${ res.client }" data-res-leader="${ res.leader }" data-res-start-date="${ res.start_date }" data-res-end-date="${ res.end_date }" data-res-progress="${ res.progress }" data-res-id="${ res.id }" class="fa-solid fa-edit text-gray-100 bg-blue-600 rounded py-2 px-3"></i></button>
+            <i data-role="modal-delete:trigger" data-res-id="${ res.id }" class="fa-solid fa-trash text-gray-100 bg-red-600 rounded py-2 px-3"></i>
           </td>
         </td>
       </tr>

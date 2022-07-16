@@ -2,7 +2,7 @@
   "name": "project-monitoring",
   "version": "1.0.0",
   "description": "Project Monitoring - Tes Magang Bersertifikat Kampus Merdeka YHC QuIP Batch 3 - Unit Digitaliz Divisi Web Developer",
-  "main": "index.php",
+  "main": "index.html",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },

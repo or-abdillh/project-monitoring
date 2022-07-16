@@ -36,10 +36,10 @@ if ( isset($_GET["res"]) ) {
 </head>
 <body>
   <main class="bg-slate-100 min-h-screen w-full pt-10 px-8">
-    <h1 class="text-xl text-gray-700 text-center mb-3">Project Monitoring</h1> 
-
+    <h1 class="text-xl md:text-2xl text-gray-700 text-center mb-3">Project Monitoring</h1> 
+    <i data-role="modal-create:trigger" class="px-8 py-2 rounded bg-slate-600 text-gray-100 fa-solid fa-plus"></i>
     <!-- Table Wrapper -->
-    <div class="flex flex-col overflow-scroll w-11/12 mx-auto">
+    <div class="flex flex-col overflow-scroll mx-auto mb-5">
       <div class="overflow-x-auto sm:-mx-6 lg:-mx-8">
         <div class="py-2 inline-block min-w-full sm:px-6 lg:px-8">
           <div class="overflow-x-auto">
@@ -58,8 +58,8 @@ if ( isset($_GET["res"]) ) {
     </div>
   </main> 
 
-  <!-- Modals -->
-  <section id="modal-edit" tabindex="-1" class="hidden duration-300 bg-gray-500 bg-opacity-25 backdrop-blur-md overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 w-full md:inset-0 h-modal md:h-full justify-center items-center flex" aria-modal="true" role="dialog">
+  <!-- Update -->
+  <section id="modal-edit" tabindex="-1" class="hidden duration-300 bg-gray-500 bg-opacity-25 backdrop-blur-md overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 bottom-0 z-50 w-full md:inset-0 h-modal md:h-full justify-center items-center flex" aria-modal="true" role="dialog">
     <!-- Main modal -->
     <div class="relative p-4 w-full max-w-md h-full md:h-auto">
       <!-- Modal content -->
@@ -102,8 +102,52 @@ if ( isset($_GET["res"]) ) {
     </div>
   </section>
 
-<!-- Confirm -->
-<section id="modal-delete" tabindex="-1" class="hidden duration-300 bg-gray-500 bg-opacity-25 backdrop-blur-md overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 w-full md:inset-0 h-modal md:h-full justify-center items-center flex" aria-modal="true" role="dialog">
+ <!-- Create -->
+  <section id="modal-create" tabindex="-1" class="hidden duration-300 bg-gray-500 bg-opacity-25 backdrop-blur-md overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 bottom-0 z-50 w-full md:inset-0 h-modal md:h-full justify-center items-center flex" aria-modal="true" role="dialog">
+    <!-- Main modal -->
+    <div class="relative p-4 w-full max-w-md h-full md:h-auto">
+      <!-- Modal content -->
+      <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
+        <button data-role="modal-create:close" type="button" class="absolute top-3 right-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-800 dark:hover:text-white" data-modal-toggle="authentication-modal">
+            <i class="fa-solid fa-times text-gray-500 text-2xl" data-role="modal-create:close" ></i>
+        </button>
+        <div class="py-6 px-6 lg:px-8">
+          <h3 class="mb-4 text-xl font-medium text-gray-900 dark:text-white">Create New Project</h3>
+          <form class="space-y-6" id="form-create" action="" method="POST">
+            <div>
+              <label for="name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Project Name</label>
+              <input type="text" name="name" id="name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" placeholder="ex: Information System" required="">
+            </div>
+            <div>
+              <label for="client" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Client</label>
+              <input type="text" name="client" id="client" placeholder="ex: Politeknik Hasnur" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" required="">
+            </div>
+            <div>
+              <label for="leader" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Project Leader</label>
+              <input type="text" name="leader" id="leader" placeholder="ex: Junaidi Abdul Rahman" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" required="">
+            </div>
+            <div>
+              <label for="start_date" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Start Date Of Project</label>
+              <input type="date" name="start_date" id="start_date" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" required="">
+            </div>
+            <div>
+              <label for="end_date" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Deadline</label>
+              <input type="date" name="end_date" id="end_date" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" required="">
+            </div>
+            <div>
+              <label for="progress" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Current Progress : 45%</label>
+              <input type="range" min="0" max="100" name="progress" id="progress" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" required="">
+            </div>
+            <button name="create" type="submit" class="w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Submit</button> 
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+<!-- Delete -->
+<section id="modal-delete" tabindex="-1" class="hidden duration-300 bg-gray-500 bg-opacity-25 backdrop-blur-md overflow-y-auto overflow-x-hidden fixed top-0 right-0 bottom-0 left-0 z-50 w-full md:inset-0 h-modal md:h-full justify-center items-center flex" aria-modal="true" role="dialog">
     <!-- Main modal -->
     <div class="relative p-4 w-full max-w-md h-full md:h-auto">
       <!-- Modal content -->
@@ -112,7 +156,7 @@ if ( isset($_GET["res"]) ) {
             <i class="fa-solid fa-times text-gray-500 text-2xl" data-role="modal-delete:close" ></i>
         </button>
         <div class="py-6 px-6 lg:px-8">
-          <h3 class="mb-4 text-xl font-medium text-gray-900 dark:text-white">Are you sure want delete this project?</h3>
+          <h3 class="mb-4 text-xl font-medium text-gray-900 dark:text-white">Are you sure you want to delete this project</h3>
           <form class="space-y-6" id="form-delete" action="" method="POST">
             <input type="hidden" name="id-delete">
             <button name="delete" type="submit" class="w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Yes Im Sure</button> 

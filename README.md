@@ -15,4 +15,4 @@ Project Monitoring - Tes Magang Bersertifikat Kampus Merdeka YHC QuIP Batch 3 - 
 <img src="src/assets/asset-5.png" /></br>
 
 Last edited on 16/7/2022 <br>
-by [or.abdill](http://or-abdillh.vercel.app)
+by [or.abdillh](http://or-abdillh.vercel.app)
